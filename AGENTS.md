@@ -16,16 +16,16 @@ This file contains guidelines for agentic coding assistants working on the envye
 ### Running Tests
 ```bash
 # Run all tests
-python3 -m pytest
+python3 -m unittest discover tests/
 
-# Run a single test
-python3 -m pytest tests/test_module.py::test_function
+# Run a single test file
+python3 -m unittest tests.test_envyeet
+
+# Run a specific test class
+python3 -m unittest tests.test_envyeet.TestEnvLine
 
 # Run tests with verbose output
-python3 -m pytest -v
-
-# Run tests with coverage
-python3 -m pytest --cov=. --cov-report=term-missing
+python3 -m unittest discover tests/ -v
 ```
 
 ### Linting and Formatting
@@ -106,10 +106,10 @@ python3 envyeet.py file1.env file2.env --output merged.env
 - Preserve original order for determinism
 
 ### Testing
-- Use `pytest` framework
+- Use `unittest` framework (built-in, no dependencies)
 - Write unit tests for all public functions
 - Test edge cases: empty files, malformed lines, duplicate keys
-- Use fixtures for common test data
+- Use `tempfile.TemporaryDirectory` for test file operations
 - Aim for high test coverage (>80%)
 
 ### Command Line Interface
