@@ -7,7 +7,7 @@
 1. **Copy the script** to your desired location:
    ```bash
    # Download and save the script
-   curl -O https://raw.githubusercontent.com/yourusername/envyeet/main/envyeet.py
+   curl -O https://raw.githubusercontent.com/xdrdak/envyeet/main/envyeet.py
    # or copy it directly to your machine
    ```
 

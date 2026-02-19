@@ -85,6 +85,8 @@ Create a backup of `<file>`.
 | `--output <file>` | path | no | stdout | Write output to specified file |
 | `--overwrite` | flag | no | `false` | Write directly to target file (destructive) |
 | `--dry-run` | flag | no | `false` | Show what would change without modifying files |
+| `--force` | flag | no | `false` | Skip confirmation prompts for destructive operations |
+| `--no-input` | flag | no | `false` | Disable confirmation prompts (alias for `--force`) |
 
 ### Backup-specific Flags
 
@@ -128,8 +130,7 @@ Create a backup of `<file>`.
 
 ### Destructive Operations
 - `--overwrite` requires user confirmation when stdin is a TTY
-- `--no-input` flag disables confirmation prompts
-- `--force` flag skips confirmation in non-interactive mode
+- `--force` or `--no-input` skips confirmation prompts (useful for scripts/CI)
 
 ### File Safety
 - Never overwrite without explicit user action (`--overwrite` flag)
@@ -352,8 +353,11 @@ envyeet backup .env --output .env.backup
 
 ### Script-Friendly Usage
 ```bash
-# Non-interactive merge with no prompts
-envyeet merge .env.ci .env --overwrite --no-input --force
+# Non-interactive merge with no prompts (for CI/scripts)
+envyeet merge .env.ci .env --overwrite --force
+
+# Alternatively, use --no-input (alias for --force)
+envyeet merge .env.ci .env --overwrite --no-input
 ```
 
 ### Quiet Mode
